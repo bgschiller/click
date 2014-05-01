@@ -172,6 +172,7 @@ def test_eager_required_option_allows_help(runner):
     @click.command()
     @click.option('--source',
         required=True,
+        is_eager=True,
         help='source file')
     @click.option('--dest',
         callback=get_from_source,
@@ -182,3 +183,4 @@ def test_eager_required_option_allows_help(runner):
 
     result = runner.invoke(cli,['--help'])
     assert not result.exception
+
